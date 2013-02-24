@@ -32,7 +32,8 @@ module.exports = function () {
 
     return {
         fly : function (config) {
-            var command;
+            var args,
+                command;
             
             commands = commands(cli, config).getAll();
 
@@ -51,7 +52,13 @@ module.exports = function () {
 
                 commands.init.exec();
             } else {
-                cli.parse(process.argv);
+                args = cli.parse(process.argv).rawArgs;
+
+                // Execute the default command, which is 'analyze',
+                // if the user has not defined one.
+                if (!args[2]) {
+                    commands.analyze.exec();
+                }
             }
         }
     };
