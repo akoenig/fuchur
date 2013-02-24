@@ -1,7 +1,7 @@
 /*
- * snell
+ * Fuchur analyzes the status of git repositories with ease.
  *
- * Copyright(c) 2012 André König <andre.koenig@gmail.com>
+ * Copyright(c) 2013 André König <andre.koenig@gmail.com>
  * MIT Licensed
  *
  */
