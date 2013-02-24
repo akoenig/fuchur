@@ -1,0 +1,18 @@
+{
+  "name": "fuchur",
+  "version": "0.1.0",
+  "description": "Fuchur analyzes the status of git repositories with ease.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/akoenig/fuchur.git"
+  },
+  "keywords": [
+    "git"
+  ],
+  "author": "André König <andre.koenig@gmail.com> (http://profile.lochkartenstanzer.de)",
+  "license": "MIT"
+}
