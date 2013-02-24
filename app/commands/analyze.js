@@ -28,7 +28,7 @@ module.exports = function (cli, config) {
         'description': {
             enumerable: true,
             writable: false,
-            value: 'FILLME'
+            value: 'Checks the status of all your git repositories and creates a detailed report afterwards.'
         },
         'author': {
             enumerable: true,

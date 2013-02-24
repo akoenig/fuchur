@@ -28,7 +28,7 @@ module.exports = function (cli, config) {
         'description': {
             enumerable: true,
             writable: false,
-            value: 'FILLME'
+            value: "Asks where 'fuchur' should search for your git repositories."
         },
         'author': {
             enumerable: true,
