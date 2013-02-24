@@ -20,7 +20,7 @@ Asks where the app should search for your git repositories.
 
     $ fuchur analyze
 
-Checks the status of all git repositories which lays in the directory that you have defined with the _init_ command. This is the default command. You can also initiate the process by calling:
+Checks the status of all git repositories which lays in the directory that you have defined with the _init_ command. This is the default command. You can also initiate the process by executing:
 
     $ fuchur
 
