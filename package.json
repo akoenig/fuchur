@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Fuchur analyzes the status of git repositories with ease.",
   "main": "index.js",
+  "bin": {
+    "fuchur": "./bin/fuchur"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,5 +17,11 @@
     "git"
   ],
   "author": "André König <andre.koenig@gmail.com> (http://profile.lochkartenstanzer.de)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "colors": "0.6.x",
+    "commander": "1.0.x",
+    "shelljs": "0.0.8",
+    "solar": "0.1.x"
+  }
 }

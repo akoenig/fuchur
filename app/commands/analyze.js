@@ -5,54 +5,42 @@
  * MIT Licensed
  *
  */
+
 require('shelljs/global');
 require('colors');
 
 var fs         = require('fs'),
-    repository = require('./repository')();
+    repository = require('../utilities/repository')();
 
-module.exports = function () {
+module.exports = function (cli, config) {
 
     'use strict';
 
-    var gitz = {},
+    var command = {},
         privates = {};
 
-    Object.defineProperties(gitz, {
+    Object.defineProperties(command, {
         'name': {
             enumerable: true,
             writable: false,
-            value: 'Gitz'
+            value: 'analyze'
         },
         'description': {
             enumerable: true,
             writable: false,
-            value: 'Command that helps you to track the status of all git \nrepositories in a specific directory.'
+            value: 'FILLME'
         },
         'author': {
             enumerable: true,
             writable: false,
             value: 'André König (andre.koenig@gmail.com)'
         },
-        'version': {
-            enumerable: true,
-            writable: false,
-            value: '1.0.0'
-        },
         'pattern': {
             enumerable: true,
             writable: false,
-            value: 'gitz <path>'
+            value: 'analyze'
         }
     });
-
-    privates.header = function () {
-        echo('\n-----------------------------------------------------'.rainbow);
-        echo(('\n~' + gitz.name + '~\n').green.bold);
-        echo('Version: ' + gitz.version + ' - ' + gitz.author + '\n');
-        echo(gitz.description);
-        echo('\n-----------------------------------------------------\n'.rainbow);
-    };
 
     privates.footer = function (changes) {
         if (!changes) {
@@ -113,14 +101,15 @@ module.exports = function () {
         return changes;
     };
 
-    Object.defineProperty(gitz, 'exec', {
+    Object.defineProperty(command, 'exec', {
         enumerable: true,
         writable: false,
         value : function (path) {
             var changes = 0,
-                status;
+                status,
+                path;
 
-            privates.header();
+            path = config.get('searchPath');
 
             privates.check(path);
 
@@ -163,5 +152,5 @@ module.exports = function () {
         }
     });
 
-    return gitz;
+    return command;
 };
