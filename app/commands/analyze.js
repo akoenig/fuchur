@@ -6,6 +6,8 @@
  *
  */
 
+/*global which:true, echo:true, exit:true */
+
 require('shelljs/global');
 require('colors');
 
@@ -104,7 +106,7 @@ module.exports = function (cli, config) {
     Object.defineProperty(command, 'exec', {
         enumerable: true,
         writable: false,
-        value : function (path) {
+        value : function () {
             var changes = 0,
                 status,
                 path;

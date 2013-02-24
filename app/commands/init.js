@@ -6,11 +6,9 @@
  *
  */
 
-require('shelljs/global');
 require('colors');
 
-var fs         = require('fs'),
-    repository = require('../utilities/repository')();
+var fs = require('fs');
 
 module.exports = function (cli, config) {
 

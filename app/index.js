@@ -7,12 +7,15 @@
  */
 
 var cli      = require('commander'),
-    commands = require('./commands');
+    commands = require('./commands'),
+    packagejson = require('../package.json');
 
 module.exports = function () {
     'use strict';
 
     var privates = {};
+
+    cli.version(packagejson.version);
 
     // Helper method which binds the given command
     // to the command line interface in a DSL fashion.
@@ -46,7 +49,7 @@ module.exports = function () {
             if (!config.get('searchPath')) {
                 console.log("  ✖ Where are your repos? Don't know where to search. Do you want to tell me?\n".red);
 
-                commands['init'].exec();
+                commands.init.exec();
             } else {
                 cli.parse(process.argv);
             }
