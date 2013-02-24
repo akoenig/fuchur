@@ -22,7 +22,7 @@ Asks where the app should search for your git repositories.
 
 Checks the status of all git repositories which lays in the directory that you have defined with the _init_ command. This is the default command. You can also initiate the process by calling:
 
-$ fuchur
+    $ fuchur
 
 I hope that you like the app. Feel free to send me feedback, questions and pull requests of course :)
 
