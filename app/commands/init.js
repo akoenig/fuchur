@@ -58,7 +58,7 @@ module.exports = function (cli, config) {
                 // If so, expand the path value.
                 tilde = (searchPath.charAt(0) === '~');
 
-                Step({
+                async.series({
                     checkTilde : function (callMe) {
                         if (tilde) {
                             expandTilde(searchPath, function (expandedPath) {
