@@ -98,6 +98,13 @@ module.exports = function (cli, config) {
             changes = true;
 
             console.log(output);
+
+        // TODO: How to handle warnings?
+        } else if (!status.branch) {
+            output = ('  ✖ ' + status.name.bold.underline).red + '\n\n';
+            output = output + '    WARNING '.bold.red + 'branch: (no branch) - detached HEAD!\n';
+
+            console.log(output);
         }
 
         return changes;

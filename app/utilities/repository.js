@@ -27,7 +27,9 @@ module.exports = function () {
     privates.determineBranch = function () {
         var output = exec('git branch', execOptions).output;
 
-        return output.match(/[*]{1}\s(\w+)/i)[1];
+        output = output.match(/[*]{1}\s(\w+)/i);
+
+        return (!output) ? null : output[1];
     };
 
     privates.determineUnpusheds = function (branch) {
