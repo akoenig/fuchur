@@ -8,7 +8,10 @@
 
 require('colors');
 
-var fs = require('fs');
+var async       = require('async'),
+    fs          = require('fs'),
+    path        = require('path'),
+    expandTilde = require('tilde-expansion');
 
 module.exports = function (cli, config) {
 
@@ -48,19 +51,48 @@ module.exports = function (cli, config) {
         enumerable: true,
         writable: false,
         value : function () {
-            cli.prompt('\n  ✎ Path to my repositories: ', function (path) {
-                if (fs.existsSync(path)) {
-                    path = path + ((path.charAt(path.length - 1) !== "/") ? '/' : '');
+            cli.prompt('\n  ✎ Path to my repositories: ', function (searchPath) {
+                var tilde = false;
 
-                    config.set('searchPath', path, function () {
-                        privates.footer();
+                // Is there a "tilde" in the path?
+                // If so, expand the path value.
+                tilde = (searchPath.charAt(0) === '~');
 
-                        process.exit();
-                    });
-                } else {
-                    console.log(("\n  ✖ Excuse me, this is not a valid place. Try again. \n").red);
-                    command.exec();
-                }
+                Step({
+                    checkTilde : function (callMe) {
+                        if (tilde) {
+                            expandTilde(searchPath, function (expandedPath) {
+                                searchPath = expandedPath;
+
+                                callMe();
+                            });
+                        } else {
+                            callMe();
+                        }
+                    },
+                    normalize : function (callMe) {
+                        // Normalize the path and add a trailing slash.
+                        searchPath = path.normalize(searchPath) + path.sep;
+
+                        callMe();
+                    },
+                    exists : function (callMe) {
+                        var exists = fs.existsSync(searchPath);
+
+                        callMe(exists);
+                    }
+                }, function (exists) {
+                   if (exists) {
+                       config.set('searchPath', searchPath, function () {
+                           privates.footer();
+
+                           process.exit();
+                       });
+                   } else {
+                       console.log(("\n  ✖ Excuse me, this is not a valid place. Try again. \n").red);
+                       command.exec();
+                   } 
+                });
             });
         }
     });
