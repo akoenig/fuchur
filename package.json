@@ -1,6 +1,6 @@
 {
   "name": "fuchur",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Fuchur analyzes the status of git repositories with ease.",
   "main": "index.js",
   "bin": {

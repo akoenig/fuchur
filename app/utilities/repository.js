@@ -27,7 +27,7 @@ module.exports = function () {
     privates.determineBranch = function () {
         var output = exec('git branch', execOptions).output;
 
-        output = output.match(/[*]{1}\s(\w+)/i);
+        output = output.match(/[*]{1}\s(\S+)/i); // not matching hyphens: /[*]{1}\s(\w+)/i
 
         return (!output) ? null : output[1];
     };
