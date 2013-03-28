@@ -57,4 +57,4 @@ I hope that you like the app. Feel free to send me feedback, questions and pull 
 
 ## Author
 
-Copyright (c) 2013, [André König](http://lochkartenstanzer.de) ([Google+](http://profile.lochkartenstanzer.de)) (andre.koenig -[at]- gmail [*dot*] com)
+Copyright (c) 2013, [André König](http://iam.andrekoenig.info)
